@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-03-27T12:47:43.212336-03:00 by Eclipse SUMO sumo 1.26.0
+-->
+
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="osm.net.xml.gz"/>
+    <route-files value="fluxos_finais_mistos.rou.xml"/>
+
+    <!---osm.passenger.trips.xml,osm.motorcycle.trips.xml,osm.truck.trips.xml, routes.rou.xml, routes.rou.xml, -->
+
+        <additional-files value="osm.poly.xml.gz,output.add.xml"/>
+    </input>
+    
+    <!--Aleatoriza a entrada de veiculos, para evitar que eles entrem em ordem fixa, o que pode causar congestionamentos artificiais--> 
+    <random_number>
+        <random value="true"/>
+    </random_number>
+
+    <output>
+        <tripinfo-output value="tripinfos.xml"/>
+        <statistic-output value="stats.xml"/>
+    </output>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    <!--Aqui faz a coleta de dados de conflitos-->
+        <device.ssm.probability value="1.0"/> 
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.file value="conflitos_br101.xml"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+    <!--Veiculos ficarão parado quando colidirem-->
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+    </processing>
+    
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/> 
+    </time>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <gui_only>
+        <gui-settings-file value="osm.view.xml"/>
+    </gui_only>
+
+</sumoConfiguration>

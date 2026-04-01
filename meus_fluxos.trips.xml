@@ -1,0 +1,26 @@
+<routes>
+<vTypeDistribution id="mix_rodovia">
+        
+        <vType id="car_perfeito" vClass="passenger" color="green" probability="0.56" maxSpeed="27.78" speedFactor="1.0" speedDev="0.05" sigma="0.5" tau="1.0" minGap="2.5" />
+        <vType id="car_distraido" vClass="passenger" color="yellow" probability="0.08" maxSpeed="27.78" speedFactor="0.9" sigma="1.0" tau="2.5" minGap="0.5" />
+        <vType id="car_infrator" vClass="passenger" color="orange" probability="0.08" maxSpeed="33.33" speedFactor="1.2" jmIgnoreFoeProb="0.9" jmDriveAfterRedTime="3.0" jmIgnoreFoeSpeed="20.0"/>
+        <vType id="car_costureiro" vClass="passenger" color="red" probability="0.08" maxSpeed="33.33" speedFactor="1.2" lcAssertive="5.0" lcSpeedGain="3.0" lcPushy="1.0" minGap="0.5"/>
+
+        <vType id="cam_perfeito" vClass="truck" color="green" probability="0.105" maxSpeed="22.22" speedFactor="1.0" speedDev="0.05" sigma="0.5" tau="1.5" minGap="3.0" />
+        <vType id="cam_distraido" vClass="truck" color="yellow" probability="0.015" maxSpeed="22.22" speedFactor="0.95" sigma="1.0" tau="3.5" minGap="1.0" />
+        <vType id="cam_infrator" vClass="truck" color="orange" probability="0.015" maxSpeed="25.00" speedFactor="1.1" jmIgnoreFoeProb="0.9" jmDriveAfterRedTime="3.0" jmIgnoreFoeSpeed="20.0"/>
+        <vType id="cam_agressivo" vClass="truck" color="red" probability="0.015" maxSpeed="25.00" speedFactor="1.1" lcAssertive="2.0" lcSpeedGain="1.5" lcPushy="0.8" minGap="1.5"/>
+
+        <vType id="moto_perfeita" vClass="motorcycle" color="green" probability="0.035" maxSpeed="25.00" speedFactor="1.0" speedDev="0.1" sigma="0.5" tau="0.8" minGap="1.0" />
+        <vType id="moto_distraida" vClass="motorcycle" color="yellow" probability="0.005" maxSpeed="22.22" speedFactor="0.9" sigma="1.0" tau="2.0" minGap="0.3" />
+        <vType id="moto_infratora" vClass="motorcycle" color="orange" probability="0.005" maxSpeed="33.33" speedFactor="1.3" jmIgnoreFoeProb="0.9" jmDriveAfterRedTime="3.0" jmIgnoreFoeSpeed="20.0"/>
+        <vType id="moto_costureira" vClass="motorcycle" color="red" probability="0.005" maxSpeed="33.33" speedFactor="1.3" lcAssertive="10.0" lcSpeedGain="5.0" lcPushy="1.0" minGap="0.1"/>
+        
+    </vTypeDistribution>
+
+    <flow id="br101_ida" type="mix_rodovia" begin="0" end="3600" vehsPerHour="3600" 
+          from="977998188#0" via="152471509#0-AddedOnRampEdge" to="414846122"/>
+
+    <flow id="br101_volta" type="mix_rodovia" begin="0" end="3600" vehsPerHour="3600" 
+          from="414846116" via="978745921" to="977998185#1"/>
+</routes>

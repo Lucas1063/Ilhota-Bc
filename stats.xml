@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-04-01T19:19:32.715850-03:00 by Eclipse SUMO GUI 1.26.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.net.xml.gz"/>
+        <route-files value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\fluxos_finais_mistos.rou.xml"/>
+        <additional-files value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.poly.xml.gz,C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\output.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\tripinfos.xml"/>
+        <statistic-output value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\stats.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+        <device.ssm.file value="conflitos_br101.xml"/>
+    </ssm_device>
+
+    <random_number>
+        <random value="true"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.view.xml"/>
+    </gui_only>
+
+</sumoConfiguration>
+-->
+
+<statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
+    <performance clockBegin="258468.25" clockEnd="259026.75" clockDuration="558.50" traciDuration="1343.29" realTimeFactor="6.45" vehicleUpdatesPerSecond="19545.31" personUpdatesPerSecond="0.00" begin="0.00" end="3600.00" duration="3600.00"/>
+    <vehicles loaded="7200" inserted="3127" running="323" waiting="4073"/>
+    <teleports total="0" jam="0" yield="0" wrongLane="0"/>
+    <safety collisions="0" emergencyStops="0" emergencyBraking="9"/>
+    <persons loaded="0" running="0" jammed="0"/>
+    <personTeleports total="0" abortWait="0" wrongDest="0"/>
+    <vehicleTripStatistics count="2804" routeLength="8044.16" speed="21.98" duration="368.60" waitingTime="0.00" timeLoss="26.95" departDelay="898.96" departDelayWaiting="-1.00" totalTravelTime="1033548.70" totalDepartDelay="2520682.20"/>
+    <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
+    <rideStatistics number="0"/>
+    <transportStatistics number="0"/>
+</statistics>

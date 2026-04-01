@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-04-01T19:19:33.129263-03:00 by Eclipse SUMO GUI 1.26.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.net.xml.gz"/>
+        <route-files value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\fluxos_finais_mistos.rou.xml"/>
+        <additional-files value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.poly.xml.gz,C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\output.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\tripinfos.xml"/>
+        <statistic-output value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\stats.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+        <device.ssm.file value="conflitos_br101.xml"/>
+    </ssm_device>
+
+    <random_number>
+        <random value="true"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="C:\Users\weige\Desktop\TCC_SUMO\Rotas_oficiais\Ilhota-Bc\osm.view.xml"/>
+    </gui_only>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="1244.80" end="1334.20" ego="br101_volta.493" foe="br101_volta.492">
+        <minTTC time="1322.70" position="2042.65,6210.12" type="2" value="1.26" speed="18.63"/>
+        <maxDRAC time="1322.70" position="2042.65,6210.12" type="2" value="1.18" speed="18.63"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="1280.70" end="1340.40" ego="br101_volta.492" foe="br101_volta.493">
+        <minTTC time="1322.70" position="2042.65,6210.12" type="3" value="1.26" speed="15.65"/>
+        <maxDRAC time="1322.70" position="2042.65,6210.12" type="3" value="1.18" speed="15.65"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2344.20" end="2373.70" ego="br101_volta.896" foe="br101_volta.892">
+        <minTTC time="2352.90" position="2032.08,6269.19" type="2" value="1.22" speed="20.31"/>
+        <maxDRAC time="2352.90" position="2032.08,6269.19" type="2" value="1.49" speed="20.31"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2344.20" end="2379.00" ego="br101_volta.892" foe="br101_volta.896">
+        <minTTC time="2352.90" position="2032.08,6269.19" type="3" value="1.22" speed="16.68"/>
+        <maxDRAC time="2352.90" position="2032.08,6269.19" type="3" value="1.49" speed="16.68"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+</SSMLog>
