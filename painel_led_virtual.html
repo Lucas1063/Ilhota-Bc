@@ -1,0 +1,244 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de LED Virtual — PMV</title>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<style>
+  :root{
+    --housing:#1b1d21;
+    --housing-edge:#2c2f36;
+    --panel:#070707;
+    --dot-off:#171717;
+    --amber:#ffb000;
+    --green:#37e06a;
+    --red:#ff3b30;
+    --chrome:#0f1114;
+    --ink:#e7e9ee;
+    --ink-dim:#8b909b;
+    --line:#23262d;
+    --ok:#37e06a;
+    --bad:#ff5a4d;
+    --mono:'DejaVu Sans Mono',ui-monospace,Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--chrome);color:var(--ink);
+    font-family:var(--sans);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    padding:28px 16px 48px;gap:22px;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--ink-dim);
+  }
+  h1{font-size:19px;font-weight:600;margin:2px 0 0;letter-spacing:-.01em}
+
+  /* --- the sign itself: the signature element --- */
+  .gantry{display:flex;flex-direction:column;align-items:center;gap:0}
+  .post{width:10px;height:20px;background:linear-gradient(var(--housing-edge),var(--housing));border-radius:2px}
+  .housing{
+    background:linear-gradient(180deg,var(--housing-edge),var(--housing));
+    padding:16px;border-radius:12px;
+    box-shadow:0 18px 44px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);
+    border:1px solid #34383f;
+  }
+  .panel{
+    background:var(--panel);border-radius:5px;padding:16px 18px 12px;
+    display:grid;gap:clamp(3px,1.1vw,6px);
+    grid-template-columns:repeat(25,1fr);
+    width:min(88vw,560px);
+  }
+  .dot{width:100%;aspect-ratio:1;border-radius:50%;background:var(--dot-off);transition:background .12s,box-shadow .12s}
+  .dot.on{background:var(--c);box-shadow:0 0 6px var(--c),0 0 2px var(--c)}
+  .caption{
+    margin-top:12px;text-align:center;font-family:var(--mono);
+    font-weight:700;letter-spacing:.12em;font-size:clamp(13px,3.2vw,19px);
+    color:var(--dot-off);transition:color .15s,text-shadow .15s;min-height:1.2em;
+  }
+  .caption.lit{color:var(--c);text-shadow:0 0 12px var(--c)}
+  .blink{animation:blink 1.05s steps(1) infinite}
+  @keyframes blink{50%{opacity:.18}}
+
+  /* --- control deck --- */
+  .deck{width:min(92vw,560px);display:flex;flex-direction:column;gap:14px}
+  .card{background:#101216;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .row+.row{margin-top:10px}
+  label{font-size:12px;color:var(--ink-dim);min-width:52px}
+  input{
+    flex:1;min-width:0;background:#080a0d;border:1px solid var(--line);color:var(--ink);
+    font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:6px;
+  }
+  input:focus{outline:none;border-color:#3a4350}
+  button{
+    font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:#171a1f;color:var(--ink);
+    padding:9px 14px;border-radius:7px;transition:background .12s,border-color .12s;
+  }
+  button:hover{background:#1e2229;border-color:#39414c}
+  button:active{transform:translateY(1px)}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  .connect{background:#13351f;border-color:#1f5c33;color:#8ef0aa}
+  .connect:hover{background:#164023}
+  .test-red{border-color:#5c2320;color:#ff9d95}
+  .test-amber{border-color:#5c4a1f;color:#ffcf7a}
+  .test-green{border-color:#1f5c33;color:#8ef0aa}
+  .status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px}
+  .led{width:9px;height:9px;border-radius:50%;background:#555;box-shadow:0 0 5px #555}
+  .led.up{background:var(--ok);box-shadow:0 0 7px var(--ok)}
+  .led.err{background:var(--bad);box-shadow:0 0 7px var(--bad)}
+  .hint{font-size:11px;color:var(--ink-dim);line-height:1.5;margin:0}
+  .log{
+    font-family:var(--mono);font-size:11px;line-height:1.7;
+    max-height:120px;overflow:auto;color:var(--ink-dim);
+  }
+  .log b{color:var(--amber);font-weight:400}
+  .spacer{flex:1}
+  @media (prefers-reduced-motion:reduce){.blink{animation:none}}
+</style>
+
+<div class="eyebrow">Sinalização inteligente · saída HMI</div>
+<h1>Painel de Mensagem Variável — Virtual</h1>
+
+<div class="gantry">
+  <div class="housing">
+    <div class="panel" id="panel"></div>
+    <div class="caption" id="caption">— AGUARDANDO —</div>
+  </div>
+  <div class="post"></div>
+</div>
+
+<div class="deck">
+  <div class="card">
+    <div class="row">
+      <label for="broker">Broker</label>
+      <input id="broker" value="wss://broker.hivemq.com:8884/mqtt">
+    </div>
+    <div class="row">
+      <label for="topic">Tópico</label>
+      <input id="topic" value="rodovia/painel_led">
+    </div>
+    <div class="row">
+      <button id="btnConn" class="connect">Conectar</button>
+      <div class="spacer"></div>
+      <div class="status"><span id="led" class="led"></span><span id="stat">desconectado</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <span style="font-size:12px;color:var(--ink-dim)">Teste manual</span>
+      <div class="spacer"></div>
+      <button class="test-green" onclick="render('LIVRE')">LIVRE</button>
+      <button class="test-amber" onclick="render('LENTO')">LENTO</button>
+      <button class="test-red" onclick="render('CONGESTIONADO')">CONGESTIONADO</button>
+    </div>
+    <p class="hint" style="margin-top:10px">
+      O painel reage a mensagens publicadas no tópico acima. Seu script Python
+      (<code>client.publish("rodovia/painel_led", "CONGESTIONADO")</code>) acende este mesmo painel —
+      basta os dois usarem o <b>mesmo broker e o mesmo tópico</b>. Aceita as palavras
+      <code>LIVRE</code> / <code>LENTO</code> / <code>CONGESTIONADO</code>
+      (também entende <code>G</code>/<code>Y</code>/<code>R</code>).
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="row"><span style="font-size:12px;color:var(--ink-dim)">Mensagens recebidas</span></div>
+    <div class="log" id="log">nenhuma ainda…</div>
+  </div>
+</div>
+
+<script>
+/* ---------- matriz de pontos: 25 colunas x 15 linhas ---------- */
+const COLS=25, ROWS=15, panel=document.getElementById('panel');
+const dots=[];
+for(let i=0;i<COLS*ROWS;i++){const d=document.createElement('div');d.className='dot';panel.appendChild(d);dots.push(d);}
+const at=(c,r)=> (r>=0&&r<ROWS&&c>=0&&c<COLS) ? dots[r*COLS+c] : null;
+
+function clear(){dots.forEach(d=>{d.classList.remove('on');});}
+function set(c,r,color){const d=at(c,r);if(d){d.style.setProperty('--c',color);d.classList.add('on');}}
+
+/* tres chevrons apontando na direcao do fluxo (LIVRE e LENTO, mudando a cor) */
+function chevrons(color){
+  const cy=7;
+  for(const apex of [8,14,20]){
+    for(let r=0;r<ROWS;r++){
+      const c=apex-Math.abs(r-cy);
+      set(c,r,color); set(c-1,r,color);      // espessura 2
+    }
+  }
+}
+/* simbolo de atencao "!" (estado CONGESTIONADO) */
+function bang(color){
+  const cx=12;
+  for(let r=2;r<=9;r++){set(cx-1,r,color);set(cx,r,color);set(cx+1,r,color);}
+  for(let r=11;r<=12;r++){set(cx-1,r,color);set(cx,r,color);set(cx+1,r,color);}
+}
+
+/* ---------- estados ---------- */
+const cap=document.getElementById('caption');
+function cssVar(name){return getComputedStyle(document.documentElement).getPropertyValue(name).trim();}
+function render(state){
+  clear(); cap.className='caption'; cap.classList.remove('blink');
+  if(state==='CONGESTIONADO'){
+    bang(cssVar('--red'));
+    cap.textContent='TRÂNSITO À FRENTE · REDUZA';
+    cap.style.setProperty('--c','var(--red)'); cap.classList.add('lit','blink');
+    panel.querySelectorAll('.dot.on').forEach(d=>d.classList.add('blink'));
+  }else if(state==='LENTO'){
+    chevrons(cssVar('--amber'));
+    cap.textContent='FLUXO LENTO · ATENÇÃO';
+    cap.style.setProperty('--c','var(--amber)'); cap.classList.add('lit');
+  }else if(state==='LIVRE'){
+    chevrons(cssVar('--green'));
+    cap.textContent='PISTA LIVRE';
+    cap.style.setProperty('--c','var(--green)'); cap.classList.add('lit');
+  }else{
+    cap.textContent='— AGUARDANDO —';
+  }
+}
+render('idle');
+
+/* normaliza o payload vindo do MQTT */
+function decode(msg){
+  const m=msg.trim().toUpperCase();
+  if(m==='CONGESTIONADO'||m==='R'||m==='RED') return 'CONGESTIONADO';
+  if(m==='LENTO'||m==='L'||m==='Y'||m==='YELLOW'||m==='AMBER') return 'LENTO';
+  if(m==='LIVRE'||m==='G'||m==='GREEN') return 'LIVRE';
+  return null;
+}
+
+/* ---------- MQTT ---------- */
+let client=null;
+const led=document.getElementById('led'), stat=document.getElementById('stat'),
+      btn=document.getElementById('btnConn'), logEl=document.getElementById('log');
+let logLines=[];
+function log(t){
+  const ts=new Date().toLocaleTimeString();
+  logLines.unshift(`<b>${ts}</b>  ${t}`);
+  logLines=logLines.slice(0,30); logEl.innerHTML=logLines.join('<br>');
+}
+function setStatus(s,cls){stat.textContent=s;led.className='led'+(cls?' '+cls:'');}
+
+btn.onclick=()=>{
+  if(client && client.connected){ client.end(true); return; }
+  const url=document.getElementById('broker').value.trim();
+  const topic=document.getElementById('topic').value.trim();
+  setStatus('conectando…');
+  try{ client=mqtt.connect(url); }
+  catch(e){ setStatus('URL inválida','err'); log('erro: '+e.message); return; }
+
+  client.on('connect',()=>{
+    setStatus('conectado','up'); btn.textContent='Desconectar';
+    client.subscribe(topic,err=>log(err?'falha ao assinar '+topic:'assinando '+topic));
+  });
+  client.on('message',(t,payload)=>{
+    const raw=payload.toString(); const state=decode(raw);
+    log(`${t} → ${raw}`);
+    if(state) render(state); else log('payload não reconhecido: '+raw);
+  });
+  client.on('error',e=>{setStatus('erro','err');log('erro: '+e.message);});
+  client.on('close',()=>{setStatus('desconectado');btn.textContent='Conectar';});
+  client.on('reconnect',()=>setStatus('reconectando…'));
+};
+</script>

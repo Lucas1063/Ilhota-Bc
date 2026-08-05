@@ -7,16 +7,13 @@
 
     <input>
         <net-file value="osm.net.xml.gz"/>
-    <route-files value="fluxos_finais_mistos.rou.xml"/>
-
-    <!---osm.passenger.trips.xml,osm.motorcycle.trips.xml,osm.truck.trips.xml, routes.rou.xml, routes.rou.xml, -->
-
-        <additional-files value="osm.poly.xml.gz,output.add.xml"/>
+        <route-files value="fluxos_finais_mistos.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
     </input>
     
     <!--Aleatoriza a entrada de veiculos, para evitar que eles entrem em ordem fixa, o que pode causar congestionamentos artificiais--> 
     <random_number>
-        <random value="true"/>
+        <random value="false"/>
     </random_number>
 
     <output>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+ 
+    <!-- ================================================================
+         SENSOR (CORRIGIDO) — agora DENTRO do trecho de 2 faixas, onde a
+         fila realmente se forma (edge 813996133#0). A analise dos conflitos
+         mostrou que o congestionamento fica confinado aqui, e NAO recua para
+         a aproximacao de 3 faixas. Cobre os primeiros 300 m apos o afunilamento.
+         Edge tem 792,5 m -> pos=0 + length=300 termina em 300 m.
+         ================================================================ -->
+    <laneAreaDetector id="sensor_t0" lane="813996133#0_0" pos="0" length="300"
+                      period="1" file="sensor_out.xml"/>
+    <laneAreaDetector id="sensor_t1" lane="813996133#0_1" pos="0" length="300"
+                      period="1" file="sensor_out.xml"/>
+ 
+    <!-- ================================================================
+         PAINEL (PMV) — mantido a montante, na aproximacao de 3 faixas
+         (977998188#0, pos=30), ~720 m antes do gargalo. O motorista le o
+         aviso ANTES de entrar no afunilamento. Cor controlada via TraCI.
+         ================================================================ -->
+    <poi id="painel_led" lane="977998188#0_1" pos="30"
+         color="0,255,0" layer="10" width="6" height="6" type="PMV"/>
+ 
+</additional>
