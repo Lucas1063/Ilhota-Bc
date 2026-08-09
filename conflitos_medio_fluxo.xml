@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-09T20:12:51.076717-03:00 by Eclipse SUMO sumo 1.27.1
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="cenario_medio_fluxo.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="tripinfos_medio_fluxo.xml"/>
+        <statistic-output value="stats.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+        <device.ssm.file value="conflitos_medio_fluxo.xml"/>
+    </ssm_device>
+
+    <random_number>
+        <random value="false"/>
+        <seed value="42"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="osm.view.xml"/>
+    </gui_only>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="627.40" end="687.50" ego="br101_volta.369" foe="br101_volta.393">
+        <minTTC time="630.80" position="2418.91,3189.48" type="3" value="1.49" speed="10.11"/>
+        <maxDRAC time="630.80" position="2418.91,3189.48" type="3" value="1.69" speed="10.11"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="627.40" end="687.50" ego="br101_volta.393" foe="br101_volta.369">
+        <minTTC time="630.80" position="2418.91,3189.48" type="2" value="1.49" speed="15.13"/>
+        <maxDRAC time="630.80" position="2418.91,3189.48" type="2" value="1.69" speed="15.13"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2170.70" end="2320.30" ego="br101_volta.2117" foe="br101_volta.2099">
+        <minTTC time="2173.50" position="1996.36,6513.92" type="2" value="1.63" speed="28.84"/>
+        <maxDRAC time="2173.50" position="1996.36,6513.92" type="2" value="3.51" speed="28.84"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2170.70" end="2365.30" ego="br101_volta.2099" foe="br101_volta.2117">
+        <minTTC time="2173.50" position="1996.36,6513.92" type="3" value="1.63" speed="17.43"/>
+        <maxDRAC time="2173.50" position="1996.36,6513.92" type="3" value="3.51" speed="17.43"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+</SSMLog>
