@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
- 
+
     <!-- ================================================================
-         SENSOR (CORRIGIDO) — agora DENTRO do trecho de 2 faixas, onde a
-         fila realmente se forma (edge 813996133#0). A analise dos conflitos
-         mostrou que o congestionamento fica confinado aqui, e NAO recua para
-         a aproximacao de 3 faixas. Cobre os primeiros 300 m apos o afunilamento.
-         Edge tem 792,5 m -> pos=0 + length=300 termina em 300 m.
+         PONTO 1 — POSTO POLICIAL (sentido: quem VAI)
+         Sensor no proprio edge do posto (813996133#1, 186,7m, 2 faixas).
+         Painel no trecho anterior (813996133#0, 792,5m), a ~190m antes
+         da entrada no posto -> distancia de reacao confortavel.
          ================================================================ -->
-    <laneAreaDetector id="sensor_t0" lane="813996133#0_0" pos="0" length="300"
+    <laneAreaDetector id="sensor_posto_vai_0" lane="813996133#1_0" pos="0" length="180"
                       period="1" file="sensor_out.xml"/>
-    <laneAreaDetector id="sensor_t1" lane="813996133#0_1" pos="0" length="300"
+    <laneAreaDetector id="sensor_posto_vai_1" lane="813996133#1_1" pos="0" length="180"
                       period="1" file="sensor_out.xml"/>
- 
-    <!-- ================================================================
-         PAINEL (PMV) — mantido a montante, na aproximacao de 3 faixas
-         (977998188#0, pos=30), ~720 m antes do gargalo. O motorista le o
-         aviso ANTES de entrar no afunilamento. Cor controlada via TraCI.
-         ================================================================ -->
-    <poi id="painel_led" lane="977998188#0_1" pos="30"
+    <poi id="painel_posto_vai" lane="813996133#0_1" pos="600"
          color="0,255,0" layer="10" width="6" height="6" type="PMV"/>
- 
+
+    <!-- ================================================================
+         PONTO 2 — POSTO POLICIAL (sentido: quem VEM)
+         Sensor com 180m, IGUAL ao do posto_vai. Como o edge do posto
+         (152471518#1) tem so 57,4m, o sensor atravessa 2 edges: os
+         ultimos 122,6m do trecho anterior (152471518#0, 586,4m) +
+         os 57,4m inteiros do posto. Total = 180,0m. Isso tambem melhora
+         a deteccao (cobre mais via antes do posto, nao so o proprio posto).
+         Painel continua no mesmo trecho anterior, mais a montante.
+         ================================================================ -->
+    <laneAreaDetector id="sensor_posto_vem_0" lanes="152471518#0_0 152471518#1_0"
+                      pos="463.7" endPos="57.3" period="1" file="sensor_out.xml"/>
+    <laneAreaDetector id="sensor_posto_vem_1" lanes="152471518#0_1 152471518#1_1"
+                      pos="463.7" endPos="57.3" period="1" file="sensor_out.xml"/>
+    <poi id="painel_posto_vem" lane="152471518#0_1" pos="400"
+         color="0,255,0" layer="10" width="6" height="6" type="PMV"/>
+
+    <!-- ================================================================
+         PONTO 3 — ENTRADA DO TUNEL
+         Decisao: sensor e painel ficam DO LADO DE FORA, na aproximacao
+         (978745925, 190,8m), nao dentro do tunel. Razao: se a fila se
+         formar dentro do tunel a deteccao chega tarde (baixa visibilidade,
+         sem acostamento para reagir). Sensor cobre os ultimos 100m antes
+         da boca do tunel; painel fica no trecho anterior (152471509#1,
+         313,9m), dando ~250m de distancia de reacao antes do sensor.
+         ================================================================ -->
+    <laneAreaDetector id="sensor_tunel_0" lane="978745925_0" pos="90" length="100"
+                      period="1" file="sensor_out.xml"/>
+    <laneAreaDetector id="sensor_tunel_1" lane="978745925_1" pos="90" length="100"
+                      period="1" file="sensor_out.xml"/>
+    <poi id="painel_tunel" lane="152471509#1_1" pos="250"
+         color="0,255,0" layer="10" width="6" height="6" type="PMV"/>
+
+    <!-- ================================================================
+         PONTO 4 — DESCIDA DO MORRO
+         Sensor no inicio da descida (1414165818#3, 1656,8m, 3 faixas,
+         ja 60km/h no OSM), cobrindo os primeiros 300m — onde caminhoes/
+         veiculos pesados tendem a formar fila por frenagem. Painel fica
+         335m antes, no ultimo trecho longo antes da aproximacao (978745921).
+         ================================================================ -->
+    <laneAreaDetector id="sensor_descida_0" lane="1414165818#3_0" pos="0" length="300"
+                      period="1" file="sensor_out.xml"/>
+    <laneAreaDetector id="sensor_descida_1" lane="1414165818#3_1" pos="0" length="300"
+                      period="1" file="sensor_out.xml"/>
+    <laneAreaDetector id="sensor_descida_2" lane="1414165818#3_2" pos="0" length="300"
+                      period="1" file="sensor_out.xml"/>
+    <poi id="painel_descida" lane="978745921_1" pos="250"
+         color="0,255,0" layer="10" width="6" height="6" type="PMV"/>
+
 </additional>

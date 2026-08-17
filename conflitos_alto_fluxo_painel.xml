@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-08-12T19:11:20.662878-03:00 by Eclipse SUMO GUI 1.27.1
+<!-- generated on 2026-08-12T19:06:50.438448-03:00 by Eclipse SUMO GUI 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="C:\Users\weige\Ilhota-Bc\osm.net.xml.gz"/>
-        <route-files value="C:\Users\weige\Ilhota-Bc\fluxos_finais_mistos.rou.xml"/>
-        <additional-files value="C:\Users\weige\Ilhota-Bc\osm.poly.xml.gz,C:\Users\weige\Ilhota-Bc\output.add.xml,C:\Users\weige\Ilhota-Bc\sensores_painel.add.xml"/>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="cenario_alto_fluxo.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="C:\Users\weige\Ilhota-Bc\tripinfos.xml"/>
-        <statistic-output value="C:\Users\weige\Ilhota-Bc\stats.xml"/>
+        <tripinfo-output value="tripinfos_alto_fluxo_painel.xml"/>
+        <statistic-output value="stats.xml"/>
     </output>
 
     <time>
@@ -44,19 +44,26 @@
         <device.ssm.measures value="TTC DRAC PET"/>
         <device.ssm.thresholds value="1.5,3.4,2.0"/>
         <device.ssm.range value="50"/>
-        <device.ssm.file value="conflitos_br101.xml"/>
+        <device.ssm.file value="conflitos_alto_fluxo_painel.xml"/>
     </ssm_device>
+
+    <traci_server>
+        <remote-port value="64330"/>
+    </traci_server>
 
     <random_number>
         <random value="false"/>
+        <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\weige\Ilhota-Bc\osm.view.xml"/>
+        <gui-settings-file value="osm.view.xml"/>
+        <quit-on-end value="true"/>
+        <start value="true"/>
     </gui_only>
 
 </sumoConfiguration>
 -->
 
-<tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-</tripinfos>
+<SSMLog>
+</SSMLog>

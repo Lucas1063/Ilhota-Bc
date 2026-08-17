@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-07-25T14:35:32.287565-03:00 by Eclipse SUMO GUI 1.27.1
+<!-- generated on 2026-08-12T19:11:20.663452-03:00 by Eclipse SUMO GUI 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="osm.net.xml.gz"/>
-        <route-files value="fluxos_finais_mistos.rou.xml"/>
-        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
+        <net-file value="C:\Users\weige\Ilhota-Bc\osm.net.xml.gz"/>
+        <route-files value="C:\Users\weige\Ilhota-Bc\fluxos_finais_mistos.rou.xml"/>
+        <additional-files value="C:\Users\weige\Ilhota-Bc\osm.poly.xml.gz,C:\Users\weige\Ilhota-Bc\output.add.xml,C:\Users\weige\Ilhota-Bc\sensores_painel.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="tripinfos_painel.xml"/>
-        <statistic-output value="stats.xml"/>
+        <tripinfo-output value="C:\Users\weige\Ilhota-Bc\tripinfos.xml"/>
+        <statistic-output value="C:\Users\weige\Ilhota-Bc\stats.xml"/>
     </output>
 
     <time>
@@ -44,35 +44,28 @@
         <device.ssm.measures value="TTC DRAC PET"/>
         <device.ssm.thresholds value="1.5,3.4,2.0"/>
         <device.ssm.range value="50"/>
-        <device.ssm.file value="conflitos_painel.xml"/>
+        <device.ssm.file value="conflitos_br101.xml"/>
     </ssm_device>
-
-    <traci_server>
-        <remote-port value="56437"/>
-    </traci_server>
 
     <random_number>
         <random value="false"/>
-        <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="osm.view.xml"/>
-        <quit-on-end value="true"/>
-        <start value="true"/>
+        <gui-settings-file value="C:\Users\weige\Ilhota-Bc\osm.view.xml"/>
     </gui_only>
 
 </sumoConfiguration>
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="1279604.97" clockEnd="1279680.38" clockDuration="75.41" traciDuration="9.36" realTimeFactor="7.38" vehicleUpdatesPerSecond="31188.36" personUpdatesPerSecond="0.00" begin="0.00" end="556.90" duration="556.90"/>
-    <vehicles loaded="1209" inserted="951" running="680" waiting="163"/>
+    <performance clockBegin="604994.21" clockEnd="605015.79" clockDuration="21.58" traciDuration="0.00" realTimeFactor="0.00" vehicleUpdatesPerSecond="0.00" personUpdatesPerSecond="0.00" begin="0.00" end="0.00" duration="0.00"/>
+    <vehicles loaded="3" inserted="0" running="0" waiting="0"/>
     <teleports total="0" jam="0" yield="0" wrongLane="0"/>
-    <safety collisions="0" emergencyStops="0" emergencyBraking="8"/>
+    <safety collisions="0" emergencyStops="0" emergencyBraking="0"/>
     <persons loaded="0" running="0" jammed="0"/>
     <personTeleports total="0" abortWait="0" wrongDest="0"/>
-    <vehicleTripStatistics count="271" routeLength="8044.85" speed="21.41" duration="378.24" waitingTime="0.00" timeLoss="38.89" departDelay="12.51" departDelayWaiting="-1.00" totalTravelTime="102502.00" totalDepartDelay="3391.40"/>
+    <vehicleTripStatistics count="0" routeLength="0.00" speed="0.00" duration="0.00" waitingTime="0.00" timeLoss="0.00" departDelay="0.00" departDelayWaiting="-1.00" totalTravelTime="0.00" totalDepartDelay="0.00"/>
     <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
     <rideStatistics number="0"/>
     <transportStatistics number="0"/>
