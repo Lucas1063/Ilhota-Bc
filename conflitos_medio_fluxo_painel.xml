@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-17T20:47:27.807830-03:00 by Eclipse SUMO sumo 1.27.1
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="cenario_medio_fluxo.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="tripinfos_medio_fluxo_painel.xml"/>
+        <statistic-output value="stats.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+        <device.ssm.file value="conflitos_medio_fluxo_painel.xml"/>
+    </ssm_device>
+
+    <traci_server>
+        <remote-port value="63938"/>
+    </traci_server>
+
+    <random_number>
+        <random value="false"/>
+        <seed value="42"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="osm.view.xml"/>
+        <quit-on-end value="true"/>
+        <start value="true"/>
+    </gui_only>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="2124.00" end="2290.10" ego="br101_volta.2010" foe="br101_volta.2001">
+        <minTTC time="2186.70" position="2039.84,4687.27" type="2" value="1.37" speed="15.55"/>
+        <maxDRAC time="2186.70" position="2039.84,4687.27" type="2" value="2.36" speed="15.55"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2124.00" end="2357.60" ego="br101_volta.2001" foe="br101_volta.2010">
+        <minTTC time="2186.70" position="2039.84,4687.27" type="3" value="1.37" speed="9.06"/>
+        <maxDRAC time="2186.70" position="2039.84,4687.27" type="3" value="2.36" speed="9.06"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2328.20" end="2425.20" ego="br101_volta.2183" foe="br101_volta.2175">
+        <minTTC time="2380.30" position="2077.30,4257.10" type="3" value="0.72" speed="17.77"/>
+        <maxDRAC time="2380.30" position="2077.30,4257.10" type="3" value="4.61" speed="17.77"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2264.70" end="2479.70" ego="br101_volta.2117" foe="br101_volta.2120">
+        <minTTC time="2295.70" position="2041.11,4702.21" type="3" value="1.33" speed="8.23"/>
+        <maxDRAC time="2295.70" position="2041.11,4702.21" type="3" value="2.75" speed="8.23"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2264.70" end="2479.70" ego="br101_volta.2120" foe="br101_volta.2117">
+        <minTTC time="2295.70" position="2041.11,4702.21" type="2" value="1.33" speed="15.55"/>
+        <maxDRAC time="2295.70" position="2041.11,4702.21" type="2" value="2.75" speed="15.55"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2380.00" end="2402.10" ego="br101_volta.2175" foe="br101_volta.2183">
+        <minTTC time="2380.30" position="2077.30,4257.10" type="2" value="0.72" speed="24.39"/>
+        <maxDRAC time="2380.30" position="2077.30,4257.10" type="2" value="4.61" speed="24.39"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+</SSMLog>

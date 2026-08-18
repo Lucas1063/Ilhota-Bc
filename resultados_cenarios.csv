@@ -1,4 +1,0 @@
-cenario,n_veiculos,tempo_medio_s,tempo_mediana_s,atraso_medio_s,atraso_max_s,espera_media_s
-baixo_fluxo,1968,355.04,354.70,13.10,112.66,0.00
-medio_fluxo,3882,370.25,367.30,27.55,139.83,0.00
-alto_fluxo,5378,416.10,413.30,75.52,221.90,0.00

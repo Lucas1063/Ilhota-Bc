@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-17T20:51:01.544249-03:00 by Eclipse SUMO sumo 1.27.1
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="cenario_alto_fluxo.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="tripinfos_alto_fluxo_base.xml"/>
+        <statistic-output value="stats.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+        <collision.action value="warn"/>
+        <collision.stoptime value="1000"/>
+        <collision.check-junctions value="true"/>
+        <tls.actuated.jam-threshold value="30"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.adaptation-steps value="18"/>
+        <device.rerouting.adaptation-interval value="10"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC DRAC PET"/>
+        <device.ssm.thresholds value="1.5,3.4,2.0"/>
+        <device.ssm.range value="50"/>
+        <device.ssm.file value="conflitos_alto_fluxo_base.xml"/>
+    </ssm_device>
+
+    <traci_server>
+        <remote-port value="64032"/>
+    </traci_server>
+
+    <random_number>
+        <random value="false"/>
+        <seed value="42"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="osm.view.xml"/>
+        <quit-on-end value="true"/>
+        <start value="true"/>
+    </gui_only>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="1384.70" end="1472.80" ego="br101_volta.935" foe="br101_volta.915">
+        <minTTC time="1387.40" position="2007.95,6423.62" type="2" value="1.33" speed="20.40"/>
+        <maxDRAC time="1387.40" position="2007.95,6423.62" type="2" value="3.91" speed="20.40"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="1384.70" end="1472.80" ego="br101_volta.915" foe="br101_volta.935">
+        <minTTC time="1387.40" position="2007.95,6423.62" type="3" value="1.33" speed="10.02"/>
+        <maxDRAC time="1387.40" position="2007.95,6423.62" type="3" value="3.91" speed="10.02"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="1870.00" end="2068.70" ego="br101_ida.1869" foe="br101_ida.1870">
+        <minTTC time="1935.30" position="2122.11,1927.55" type="3" value="1.39" speed="12.05"/>
+        <maxDRAC time="1935.30" position="2122.11,1927.55" type="3" value="1.54" speed="12.05"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="1902.90" end="2043.70" ego="br101_ida.1870" foe="br101_ida.1869">
+        <minTTC time="1935.30" position="2122.11,1927.55" type="2" value="1.39" speed="16.34"/>
+        <maxDRAC time="1935.30" position="2122.11,1927.55" type="2" value="1.54" speed="16.34"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2527.30" end="2571.80" ego="br101_ida.2485" foe="br101_ida.2482">
+        <minTTC time="2550.30" position="2105.03,1902.58" type="2" value="1.47" speed="16.87"/>
+        <maxDRAC time="2550.30" position="2105.03,1902.58" type="2" value="1.73" speed="16.87"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2527.30" end="2571.40" ego="br101_ida.2482" foe="br101_ida.2485">
+        <minTTC time="2550.30" position="2105.03,1902.58" type="3" value="1.47" speed="11.79"/>
+        <maxDRAC time="2550.30" position="2105.03,1902.58" type="3" value="1.73" speed="11.79"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2943.10" end="3022.90" ego="br101_ida.2936" foe="br101_ida.2934">
+        <minTTC time="2997.90" position="2092.06,1878.51" type="2" value="1.49" speed="13.71"/>
+        <maxDRAC time="2997.90" position="2092.06,1878.51" type="2" value="1.22" speed="13.71"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="2943.10" end="3039.20" ego="br101_ida.2934" foe="br101_ida.2936">
+        <minTTC time="2997.90" position="2092.06,1878.51" type="3" value="1.49" speed="10.07"/>
+        <maxDRAC time="2997.90" position="2092.06,1878.51" type="3" value="1.22" speed="10.07"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3367.90" end="3396.30" ego="br101_volta.2232" foe="br101_volta.2258">
+        <minTTC time="3387.70" position="2023.95,4638.94" type="3" value="1.37" speed="6.66"/>
+        <maxDRAC time="3387.70" position="2023.95,4638.94" type="3" value="2.14" speed="6.66"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3367.90" end="3396.30" ego="br101_volta.2258" foe="br101_volta.2232">
+        <minTTC time="3387.70" position="2023.95,4638.94" type="2" value="1.37" speed="12.51"/>
+        <maxDRAC time="3387.70" position="2023.95,4638.94" type="2" value="2.14" speed="12.51"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3233.60" end="3428.80" ego="br101_ida.3103" foe="br101_ida.3114">
+        <minTTC time="3259.80" position="2429.40,2586.06" type="3" value="1.41" speed="7.49"/>
+        <maxDRAC time="3259.80" position="2429.40,2586.06" type="3" value="2.13" speed="7.49"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3233.60" end="3428.80" ego="br101_ida.3114" foe="br101_ida.3103">
+        <minTTC time="3259.80" position="2429.40,2586.06" type="2" value="1.41" speed="13.48"/>
+        <maxDRAC time="3259.80" position="2429.40,2586.06" type="2" value="2.13" speed="13.48"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3400.10" end="3555.30" ego="br101_ida.3338" foe="br101_ida.3345">
+        <minTTC time="3416.70" position="2132.87,1954.25" type="3" value="1.49" speed="7.24"/>
+        <maxDRAC time="3416.70" position="2132.87,1954.25" type="3" value="1.92" speed="7.24"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3400.10" end="3555.20" ego="br101_ida.3345" foe="br101_ida.3338">
+        <minTTC time="3416.70" position="2132.87,1954.25" type="2" value="1.49" speed="12.95"/>
+        <maxDRAC time="3416.70" position="2132.87,1954.25" type="2" value="1.92" speed="12.95"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3551.40" end="3597.90" ego="br101_ida.3492" foe="br101_ida.3498">
+        <minTTC time="3567.00" position="2071.85,1841.02" type="3" value="1.38" speed="7.90"/>
+        <maxDRAC time="3567.00" position="2071.85,1841.02" type="3" value="1.18" speed="7.90"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+    <conflict begin="3551.40" end="3596.30" ego="br101_ida.3498" foe="br101_ida.3492">
+        <minTTC time="3567.00" position="2071.85,1841.02" type="2" value="1.38" speed="11.14"/>
+        <maxDRAC time="3567.00" position="2071.85,1841.02" type="2" value="1.18" speed="11.14"/>
+        <PET time="NA" position="NA" type="NA" value="NA" speed="NA"/>
+    </conflict>
+</SSMLog>

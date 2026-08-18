@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-07-25T14:35:32.287565-03:00 by Eclipse SUMO GUI 1.27.1
+<!-- generated on 2026-08-17T20:58:04.187273-03:00 by Eclipse SUMO sumo 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
         <net-file value="osm.net.xml.gz"/>
-        <route-files value="fluxos_finais_mistos.rou.xml"/>
+        <route-files value="cenario_alto_fluxo.rou.xml"/>
         <additional-files value="osm.poly.xml.gz,output.add.xml,sensores_painel.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="tripinfos_painel.xml"/>
+        <tripinfo-output value="tripinfos_alto_fluxo_painel.xml"/>
         <statistic-output value="stats.xml"/>
     </output>
 
@@ -44,32 +44,35 @@
         <device.ssm.measures value="TTC DRAC PET"/>
         <device.ssm.thresholds value="1.5,3.4,2.0"/>
         <device.ssm.range value="50"/>
-        <device.ssm.file value="conflitos_painel.xml"/>
+        <device.ssm.file value="conflitos_alto_fluxo_painel.xml"/>
     </ssm_device>
 
     <traci_server>
-        <remote-port value="56437"/>
+        <remote-port value="64206"/>
     </traci_server>
 
     <random_number>
         <random value="false"/>
+        <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\weige\Ilhota-Bc\osm.view.xml"/>
+        <gui-settings-file value="osm.view.xml"/>
+        <quit-on-end value="true"/>
+        <start value="true"/>
     </gui_only>
 
 </sumoConfiguration>
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="1279604.97" clockEnd="1279680.38" clockDuration="75.41" traciDuration="9.36" realTimeFactor="7.38" vehicleUpdatesPerSecond="31188.36" personUpdatesPerSecond="0.00" begin="0.00" end="556.90" duration="556.90"/>
-    <vehicles loaded="1209" inserted="951" running="680" waiting="163"/>
+    <performance clockBegin="425349.92" clockEnd="425854.66" clockDuration="504.75" traciDuration="117.97" realTimeFactor="7.13" vehicleUpdatesPerSecond="48436.79" personUpdatesPerSecond="0.00" begin="0.00" end="3600.00" duration="3600.00"/>
+    <vehicles loaded="7200" inserted="6130" running="768" waiting="1070"/>
     <teleports total="0" jam="0" yield="0" wrongLane="0"/>
-    <safety collisions="0" emergencyStops="0" emergencyBraking="8"/>
+    <safety collisions="0" emergencyStops="0" emergencyBraking="77"/>
     <persons loaded="0" running="0" jammed="0"/>
     <personTeleports total="0" abortWait="0" wrongDest="0"/>
-    <vehicleTripStatistics count="271" routeLength="8044.85" speed="21.41" duration="378.24" waitingTime="0.00" timeLoss="38.89" departDelay="12.51" departDelayWaiting="-1.00" totalTravelTime="102502.00" totalDepartDelay="3391.40"/>
+    <vehicleTripStatistics count="5362" routeLength="8056.35" speed="19.21" duration="422.97" waitingTime="0.00" timeLoss="79.53" departDelay="199.23" departDelayWaiting="-1.00" totalTravelTime="2267956.50" totalDepartDelay="1068293.70"/>
     <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
     <rideStatistics number="0"/>
     <transportStatistics number="0"/>
